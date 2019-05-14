@@ -8,6 +8,57 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function anagrams(stringA, stringB) {}
+function anagrams (stringA, stringB) {
+  const sortedA = sanitizeString(stringA).split('').sort().join('')
+  const sortedB = sanitizeString(stringB).split('').sort().join('')
 
-module.exports = anagrams;
+  return sortedA === sortedB
+}
+
+// function anagrams (stringA, stringB) {
+//   // sanitize strings
+//   let sanitizedA = sanitizeString(stringA)
+//   let sanitizedB = sanitizeString(stringB)
+
+//   // bulid char maps
+//   let charMapA = buildCharMap(sanitizedA)
+//   let charMapB = buildCharMap(sanitizedB)
+
+//   // check equality
+//   return objectEquals(charMapA, charMapB)
+// }
+
+// remove non-word characters, make case equal
+function sanitizeString (str) {
+  return str.replace(/[^\w]/g, '').toLowerCase()
+}
+
+// // build character map from string
+// function buildCharMap (str) {
+//   let charMap = {}
+
+//   for (let char of str) {
+//     charMap[char] = charMap[char]++ || 1
+//   }
+
+//   return charMap
+// }
+
+// // determine if the keys between 2 objets are the same
+// function objectEquals (objA, objB) {
+//   // if the number of keys is different, fail fast
+//   if (Object.keys(objA).length !== Object.keys(objB).length) {
+//     return false
+//   }
+
+//   // check each key in A against B
+//   for (let key in objA) {
+//     if (objA[key] !== objB[key]) {
+//       return false
+//     }
+//   }
+
+//   return true
+// }
+
+module.exports = anagrams
